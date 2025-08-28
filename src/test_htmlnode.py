@@ -15,3 +15,13 @@ class TestHTMLNode(unittest.TestCase):
 		actual = node2.props_to_html()
 		expected = " src=\"image.jpg\" alt=\"-image-\" width=\"120\" height=\"240\""
 		self.assertEqual(actual,expected)
+
+	def test_repr2(self):
+		node1 = HTMLNode(tag="img",value=None,children=None,props={"src":"image.jpg", "alt":"-image-", "width":"120","height":"240"})
+		repr_str = str(node1)
+		print(repr_str)
+		self.assertTrue("Tag:" in repr_str)
+		self.assertTrue("Value:" in repr_str)
+		self.assertTrue("Children:" in repr_str)
+		self.assertTrue("Properties:" in repr_str)
+
