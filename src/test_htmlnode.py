@@ -19,7 +19,6 @@ class TestHTMLNode(unittest.TestCase):
 	def test_repr2(self):
 		node1 = HTMLNode(tag="img",value=None,children=None,props={"src":"image.jpg", "alt":"-image-", "width":"120","height":"240"})
 		repr_str = str(node1)
-		print(repr_str)
 		self.assertTrue("Tag:" in repr_str)
 		self.assertTrue("Value:" in repr_str)
 		self.assertTrue("Children:" in repr_str)
