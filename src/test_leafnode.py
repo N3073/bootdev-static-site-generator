@@ -20,4 +20,8 @@ class TestLeafNode(unittest.TestCase):
 		leaf=LeafNode(None, "Hello, world!",{"href":"https://www.boot.dev"})
 		self.assertEqual(leaf.to_html(), "Hello, world!")
 
-
+	def test_leaf_to_html_img(self):
+		leaf=LeafNode("img","",{"src":"src/image.jpg","alt":"-image-"})
+		self.assertEqual("<img src=\"src/image.jpg\" alt=\"-image-\">",leaf.to_html())
+if __name__ == "__main__":
+    unittest.main()
