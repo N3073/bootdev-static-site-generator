@@ -75,3 +75,13 @@ def markdown_to_blocks(markdown):
   text_blocks = filter(lambda x : x!="",text_blocks)
   text_blocks = map(lambda x : x.strip(), text_blocks)
   return list(text_blocks)
+
+def extract_title(markdown:str):
+  lines = markdown.split("\n")
+  for line in lines:
+    if len(line) < 3:
+      continue
+    line = line.strip()
+    if line[:2] == "# ":
+      return line[2:].strip()
+  raise Exception("No title!")
