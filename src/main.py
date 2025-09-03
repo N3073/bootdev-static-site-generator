@@ -41,10 +41,24 @@ def recursive_copy(source,target):
 			print(f"copy: {item_source_path} --> {item_target_path}")
 			shutil.copy(item_source_path,item_target_path)
 
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+	source_items = os.listdir(dir_path_content)
+	for item in source_items:
+		source_item_path = os.path.join(dir_path_content,item)
+		dest_item_path =os.path.join(dest_dir_path,item)
+		if os.path.isdir(source_item_path):
+			os.mkdir(dest_item_path)
+			generate_pages_recursive(source_item_path, template_path, dest_item_path)
+			continue
+		if item[-3:]!=".md":
+			continue
+		generate_page(source_item_path,"./template.html",dest_item_path.replace(".md",".html"))
+
+		
 
 def main():
 	static_to_public(".")
-	generate_page("./content/index.md","./template.html","./public/index.html")
+	generate_pages_recursive("./content","./template.html","./public")
 	sys.exit(0)
 
 if __name__=="__main__":
