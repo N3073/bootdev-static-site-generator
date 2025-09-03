@@ -48,7 +48,7 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, bas
 		dest_item_path =os.path.join(dest_dir_path,item)
 		if os.path.isdir(source_item_path):
 			os.mkdir(dest_item_path)
-			generate_pages_recursive(source_item_path, template_path, dest_item_path)
+			generate_pages_recursive(source_item_path, template_path, dest_item_path, basepath)
 			continue
 		if item[-3:]!=".md":
 			continue
