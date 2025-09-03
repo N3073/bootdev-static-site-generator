@@ -30,7 +30,7 @@ class HTMLNode():
 		repr_string += f"Properties: \n"
 		if self.props:
 			for property in self.props:
-                        	repr_string += f"\t{property}: {self.props[property]}\n"
+				repr_string += f"\t{property}: {self.props[property]}\n"
 		else:
 			repr_string += f"\tNone\n"
 		return repr_string

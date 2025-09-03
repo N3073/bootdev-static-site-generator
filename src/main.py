@@ -1,13 +1,20 @@
 from textnode import TextNode, TextType
+from leafnode import *
+from htmlnode import *
+from parentnode import *
+from markdown_to_html import *
 import sys
 def main():
-	dummy_node = TextNode("print(hello world)",TextType.CODE)
-	dummy_node2 = TextNode("boot.dev",TextType.LINK,"https://www.boot.dev")
-	dummy_node3 = TextNode("print(hello world)",TextType.CODE)
-	print(dummy_node==dummy_node2)
-	print(dummy_node==dummy_node3)
-	print(dummy_node)
-	print(dummy_node2)
+	md = """
+```
+This is text that _should_ remain
+the **same** even with inline stuff
+```
+"""
+	node = markdown_to_html_node(md)
+	html = node.to_html()
+	print(html)
+	print("<div><pre><code>This is text that _should_ remain\nthe **same** even with inline stuff\n</code></pre></div>")
 	sys.exit(0)
 
 if __name__=="__main__":
